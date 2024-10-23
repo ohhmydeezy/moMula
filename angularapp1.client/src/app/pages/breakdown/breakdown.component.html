@@ -1,0 +1,144 @@
+<div>
+  <div class="w-full h-full backdrop-blur-lg p-10">
+    <button
+      routerLink="/dashboard"
+      class="text-white hover:text-yellow-300 flex font-semibold"
+    >
+      < back to Dashboard
+    </button>
+    @if (currentCard$()?.accountBalance! <= 0) {
+    <button class="delete-button items-end" (click)="deleteCard()">
+      Delete
+    </button>
+    <h2 class="text-white justify-center font-bold text-xl mt-10 mb-5">
+      Congratulations, you have now paid this account Off, You can now delete it
+      and move onto the next one or start working on your savings pot
+    </h2>
+    }
+    <div class="items-center">
+      <h1 class="text-white text-xl font-semibold">Breakdown</h1>
+      <h1 class="text-yellow-400 text-2xl font-bold">
+        {{ currentCard$()?.accountName ?? "undefined" | capitalize }}
+      </h1>
+      <h1 class="text-yellow-500 text-2xl font-bold">
+        Balance: {{ currentCard$()?.accountBalance ?? 0 | currency : "GBP" }}
+      </h1>
+      <div class="flex flex-col items-center">
+        <div class="bg-white rounded-3xl w-1/3 m-8 flex sm:w-1/3">
+          <div>
+            <div class="w-full text-center">
+              <h1 class="font-semibold text-center">Monthly Overview</h1>
+            </div>
+            <div class="flex">
+              <div class="p-8">
+                <fa-icon
+                  [icon]="faArrowDown"
+                  class="text-blue-300 hero-icon fa-2x"
+                ></fa-icon>
+                <h3 class="text-blue-300 font-bold">Income</h3>
+                <h4 class="text-blue-300 font-bold">
+                  {{ user$()?.monthlyIncome ?? 1000 | currency : "GBP" }}
+                </h4>
+              </div>
+              <div class="p-8">
+                <fa-icon
+                  [icon]="faArrowUp"
+                  class="text-blue-500 hero-icon fa-2x"
+                ></fa-icon>
+                <h3 class="text-blue-500 font-bold">Expenses</h3>
+                <h4 class="text-blue-500 font-bold">
+                  {{ expense | currency : "GBP" }}
+                </h4>
+              </div>
+              <div class="p-8">
+                <h3 class="text-black font-bold">Lowest Card</h3>
+                <h3 class="text-blue-500 font-bold">
+                  {{ minCard()?.accountName ?? "" | capitalize }}
+                </h3>
+                <h4 class="text-black font-bold font-">Amount Left:</h4>
+              </div>
+              <div class="p-8">
+                <fa-icon
+                  [icon]="faArrowUp"
+                  class="text-blue-900 hero-icon fa-2x"
+                ></fa-icon>
+                <h3 class="text-blue-800 font-bold">
+                  {{ minCard()?.accountBalance | currency : "GBP" }}
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center items-center w-full">
+        <div class="card pb-4">
+          <img
+            [src]="currentCard$()?.cardImage | base64 : 'image/png'"
+            alt="{{ currentCard$()?.accountName }}"
+            class="flex card-image"
+          />
+        </div>
+      </div>
+      <button class="add-button" routerLink="/add-payment">Log Payment</button>
+      @if (!hasTransactions()) {
+      <div class="items-center flex flex-col">
+        <h1 class="text-white font-semibold m-4">
+          Account tracking information will be here once you get going
+        </h1>
+      </div>
+      } @else {
+      <div class="flex">
+        <div class="table-heading">
+          <h1 class="font-semibold pb-2">Balance Tracker</h1>
+          <app-breakdown-chart></app-breakdown-chart>
+        </div>
+        <div class="table-heading">
+          <h1 class="font-semibold">
+            Monthly Income {{ user$()?.monthlyIncome ?? "" | currency : "GBP" }}
+          </h1>
+          <div id="chartdiv2" style="width: 100%; height: 500px"></div>
+        </div>
+        <div class="pt-4">
+          <table class="w-full text-sm rtl:text-right">
+            <thead class="flex w-full text-xs text-white uppercase">
+              <tr>
+                <th scope="col" class="px-6 py-3 rounded-s-lg"></th>
+                <th scope="col" class="pl-32 px-6 py-3">Month</th>
+                <th scope="col" class="px-6 py-3 rounded-e-lg">Change</th>
+              </tr>
+            </thead>
+            <tbody
+              class="flex flex-col justify-between overflow-y-scroll w-full"
+              style="height: 50vh"
+            >
+              @for (item of currentCard$()?.transactions; track $index) {
+              <tr>
+                <td class="px-6 py-4">
+                  @if (item.balanceChange >= 0) {
+                  <img src="./assets/images/Ok.png" />
+                  } @else {
+                  <img src="./assets/images/Good.png" />
+                  }
+                </td>
+                <td class="px-6 py-4 text-white font-semibold pr-40">
+                  {{ item.month }}
+                </td>
+                <td
+                  [ngClass]="
+                    item.balanceChange > 0
+                      ? 'text-orange-500 font-semibold text-xl outline-white'
+                      : 'text-green-600 font-semibold text-xl outline-white'
+                  "
+                >
+                  {{ item.balanceChange | currency : "GBP" }}
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

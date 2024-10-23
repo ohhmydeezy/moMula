@@ -1,0 +1,27 @@
+.heading {
+  margin-bottom: 1.5rem;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  font-weight: 700;
+  text-align: center;
+  color: #fcd34d;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.sub-heading {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: #fcd34d;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}

@@ -1,0 +1,24 @@
+h1 {
+    font-size: 3rem;
+    padding: 50px;
+}
+
+
+.dash-button {
+padding-top: 0.625rem;
+padding-bottom: 0.625rem; 
+padding-left: 0.875rem;
+padding-right: 0.875rem; 
+margin-top: 8rem; 
+border-radius: 9999px; 
+font-size: 1.5rem;
+line-height: 2rem; 
+font-weight: 600; 
+color: #000000; 
+background-color: #FBBF24; 
+box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
+}
+
+.dash-button:hover {
+    background-color: #D97706; 
+}

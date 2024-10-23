@@ -1,0 +1,75 @@
+<div class="w-screen flex flex-col">
+  <nav class="bg-blue-600 bg-opacity-30 backdrop-blur-lg">
+    <div
+      class="container px-4 mx-auto flex flex-wrap items-center justify-between space-x-36 pt-3"
+    >
+      <div
+        class="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start"
+      >
+        <div class="flex justify-start">
+          <button (click)="handleButtonClick()">
+            <img class="w-16" src="assets/images/logo.png" alt="moMula logo" />
+          </button>
+          <h1 class="page-title mt-2">MoMula</h1>
+        </div>
+        <button class="burger-button" type="button" (click)="toggleNavbar()">
+          <fa-icon [icon]="faBars" class="hero-icon fa-2x"></fa-icon>
+        </button>
+      </div>
+      <div
+      [@openClose]="showMenu ? 'open' : 'closed'"
+        [ngClass]="{ hidden: !showMenu, flex: showMenu }"
+        class="lg:flex lg:flex-grow items-center pt-3"
+      >
+        @if (!user$()) {
+
+        <ul
+          class="flex flex-col lg:flex-row list-none justify-center mb-4 lg:space-x-36"
+        >
+          <li class="nav-item m-4">
+            <a class="page-button" routerLink="/about-us">
+              <span class="ml-2">About Us</span>
+            </a>
+          </li>
+          <li class="nav-item m-4">
+            <a class="page-button" routerLink="/register">
+              <span class="ml-2">Sign Up</span>
+            </a>
+          </li>
+          <li class="nav-item m-4 flex-end">
+            <a class="nav-button" routerLink="/sign-in">
+              <span class="ml-2 my-4">Sign In</span>
+            </a>
+          </li>
+        </ul>
+        } @else {
+        <ul
+          class="flex flex-col lg:flex-row list-none justify-center mb-4 lg:space-x-36"
+        >
+          <li class="nav-item m-4">
+            <a class="page-button" routerLink="/dashboard">
+              <span class="ml-2">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item m-4">
+            <a class="page-button" routerLink="/about-us">
+              <span class="ml-2">About Us</span>
+            </a>
+          </li>
+          <li class="nav-item m-4">
+            <a class="page-button" routerLink="/savings">
+              <span class="ml-2">Savings</span>
+            </a>
+          </li>
+
+          <li class="nav-item m-4 flex-end">
+            <a class="nav-button" routerLink="" (click)="logout()">
+              <span class="ml-2 my-4">Sign Out</span>
+            </a>
+          </li>
+        </ul>
+        }
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,39 @@
+.hero-icon {
+  width: 50px !important;
+  display: inline-block;
+  color: #fbbf24;
+}
+
+img {
+  pointer-events: none; /* Disable interaction on the image */
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+span-text {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 800;
+  color: #fbbf24;
+}
+
+hero-heading {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+
+.breakdown-div {
+  padding: 1rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+  @media (min-width: 1024px) {
+    width: 25%;
+  }
+}

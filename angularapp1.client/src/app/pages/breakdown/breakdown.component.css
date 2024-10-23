@@ -1,0 +1,55 @@
+#chartdiv2 {
+  height: 250px;
+}
+
+h1 {
+  align-items: center;
+}
+
+.card-image {
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-button {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+  border-radius: 9999px;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: #000000;
+  background-color: #fb2424;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.add-button {
+  padding-bottom: 0.625rem;
+  padding-left: 0.875rem;
+  margin-bottom: 2rem;
+  padding-right: 0.875rem;
+  border-radius: 9999px;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: #000000;
+  background-color: #fbbf24;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.add-button:hover {
+  background-color: #d97706;
+}
+
+.delete-button:hover {
+  background-color: #911100;
+}
+
+.table-heading {
+  margin: 2rem;
+  border-radius: 1rem;
+  width: 33.333333%;
+  background-color: #ffffff;
+}

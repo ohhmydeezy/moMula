@@ -1,0 +1,53 @@
+@if (user$()?.cards?.length === 0) {
+<div class="w-full h-screen backdrop-blur-lg p-10">
+  <div class="pt-28 justify-center align-middle">
+    <h1 class="text-yellow-400 text-2xl font-bold">
+      Welcome, <span>{{ user$()?.username ?? "" | capitalize }}</span>
+    </h1>
+    <h1 class="text-white">
+      You do not have any accounts added, start today by adding a card
+    </h1>
+    <a class="dash-button" routerLink="/add-card">Add</a>
+  </div>
+</div>
+} @else {
+<div class="w-full h-full backdrop-blur-lg p-10">
+  <div class="pb-4">
+    <h1 class="text-white font-bold">
+      Welcome back,
+      <span class="flex flex-col text-yellow-400 username mt-2">{{
+        user$()?.username ?? "" | capitalize
+      }}</span>
+    </h1>
+    <a class="dash-button" routerLink="/add-card">Add Account</a>
+  </div>
+  <div class="lg:mb-52">
+    <app-card-display></app-card-display>
+  </div>
+  <div class="flex">
+    <div class=" w-1/2 bg-white rounded-xl align-middle justify-center">
+      <div>
+        <h2 class="pt-2 font-bold">Overview</h2>
+        <app-charts></app-charts>
+      </div>
+    </div>
+    <div class="flex flex-col p-10">
+      <div class="flex items-center justify-between">
+        <h2 class="text-white font-bold">Payment Tracker</h2>
+        <button class="dash-button" routerLink="/add-payment">
+          Log Payment
+        </button>
+      </div>
+      @if(!hasTransactions()) {
+      <h2 class="text-white font-semibold m-4">
+        Account Payment history will be here
+      </h2>
+      }@else {
+      <div class="mt-2">
+        <app-transactions></app-transactions>
+      </div>
+      } 
+    </div>
+  </div>
+</div>
+}

@@ -1,0 +1,41 @@
+h1 {
+  font-size: 80px;
+}
+
+.error {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #fc0000;
+}
+
+.form-border {
+  margin-bottom: 1rem;
+  border-bottom-width: 1px;
+  border-color: #000000;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  color: #000000;
+}
+
+.login-input {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-right: 0.75rem;
+  border-style: none;
+  width: 100%;
+  line-height: 1.25;
+  color: #ffffff;
+  background-color: transparent;
+  appearance: none;
+}

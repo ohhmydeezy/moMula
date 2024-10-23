@@ -1,0 +1,37 @@
+.savings-button {
+    display: flex; 
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem; 
+  padding-left: 1rem;
+  padding-right: 1rem; 
+  justify-content: center; 
+  border-radius: 9999px; 
+  font-weight: 700; 
+  color: #000000; 
+  background-color: #FBBF24; 
+  }
+
+  .savings-input {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-right: 0.75rem;
+    border-style: none;
+    width: 100%;
+    line-height: 1.25;
+    color: #ffffff;
+    background-color: transparent;
+    appearance: none;
+  }
+
+  .savings-button:hover{
+    background-color: #D97706;
+  }
+
+  .form-border {
+    margin-bottom: 1rem;
+    border-bottom-width: 1px;
+    border-color: #000000;
+    align-items: center; 
+  }

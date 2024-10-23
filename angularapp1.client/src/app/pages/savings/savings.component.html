@@ -1,0 +1,57 @@
+<div class="w-full h-screen backdrop-blur-lg">
+  <h1 class="text-white font-bold text-4xl pt-20">
+    Hi,<span class="text-blue-900 font-extrabold">
+      {{ user$()?.username ?? "" | capitalize }}</span
+    >
+  </h1>
+  <h2 class="font-semibold text-white mb-10 text-2xl">
+    Welcome to your savings page
+  </h2>
+  <fa-icon
+    [icon]="PiggyBank"
+    class="text-yellow-500 hero-icon fa-2x text-9xl pt-10"
+  ></fa-icon>
+  @if (errorMessage$()) {
+    <div
+      class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+      role="alert"
+    >
+      <span class="font-medium">{{ errorMessage$() }}</span>
+    </div>
+    }
+  <div>
+    <h2 class="font-bold">
+      You current have
+      <span class="text-yellow-500">{{
+        user$()?.savings | currency : "GBP"
+      }}</span>
+      Saved
+    </h2>
+  </div>
+  <div class="flex justify-center w-full">
+  <form
+    #registerForm="ngForm"
+    (ngSubmit)="addSavings()"
+    autocomplete="off"
+    class="rounded px-8 pt-6 pb-8 mb-4"
+  >
+    <div class="form-border  items-center">
+      <label class="form-label font-semibold" for="savings">
+        Enter Savings
+      </label>
+      <input
+        name="savings"
+        [(ngModel)]="model.amount"
+        class="savings-input"
+        id="savings"
+        type="number"
+        min="1"
+        placeholder="savings"
+      />
+    </div>
+    <div class="flex  items-center justify-between">
+      <button class="savings-button" type="submit">Add To Savings</button>
+    </div>
+  </form>
+  </div>
+</div>

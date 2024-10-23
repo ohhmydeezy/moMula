@@ -1,0 +1,47 @@
+.nav-button {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  color: #000000;
+  background-color: #fbbf24;
+}
+
+.nav-button:hover {
+  background-color: #d97706;
+}
+
+.page-button {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  color: white;
+}
+
+.page-button:hover {
+  background-color: #374151;
+}
+
+.page-title {
+  padding-left: 0;
+  padding-top: 0.75rem;
+  justify-content: center;
+  width: auto;
+  height: 2rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  color: #fbbf24;
+  vertical-align: middle;
+}
+
+.burger-button {
+  @apply text-yellow-500 cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none
+}

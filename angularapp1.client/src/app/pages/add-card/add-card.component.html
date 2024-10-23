@@ -1,0 +1,75 @@
+<div class="w-full h-screen backdrop-blur-lg">
+  <div class="flex flex-col mb-2 space-x-2 pt-14">
+    <h1 class="font-bold text-yellow-400">Add Card</h1>
+    <img src=".\assets\images\Credit Card.png" class="w-1/3 mb-5" />
+    @if (errorMessage$() || userError$() ) {
+    <div
+      class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+      role="alert"
+    >
+      <span class="font-medium">{{ errorMessage$() || userError$() }}</span>
+    </div>
+    }
+    <div class="max-w-sm space-y-3">
+      <form [formGroup]="addCardForm" (ngSubmit)="addCard()" autocomplete="off">
+        <div class="justify-center">
+          <div class="bg-white rounded-2xl pb-3">
+            @if (addCardForm.get('accountName')?.invalid &&
+            (addCardForm.get('accountName')?.dirty ||
+            addCardForm.get('accountName')?.touched)) {
+            <span class="error">This Field is required</span>
+            }
+            <div class="relative">
+              <label
+                for="accountName"
+                class="block text-sm font-medium mb-2 dark:text-black"
+                >Account Name</label
+              >
+              <input
+                type="text"
+                formControlName="accountName"
+                id="accountName"
+                class="form-item"
+                placeholder="Name"
+              />
+              <label
+                for="openingBalance"
+                class="block text-sm font-medium mb-2 dark:text-black"
+                >Opening Balance</label
+              >
+              @if (addCardForm.get('openingBalance')?.invalid &&
+              (addCardForm.get('openingBalance')?.dirty ||
+              addCardForm.get('openingBalance')?.touched)) {
+              <span class="error">This Field is required</span>
+              }
+              @if(addCardForm.get('openingBalance')?.hasError('min')) {
+                <span class="error">Minimum required for opening balance</span>
+              }
+              <div class="relative">
+                <input
+                  type="number" min="1"
+                  id="openingBalance"
+                  formControlName="openingBalance"
+                  class="input"
+                  placeholder="0.00"
+                />
+                <div
+                  class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4"
+                >
+                  <span class="text-black dark:text-neutral-500">£</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          [disabled]="!addCardForm.valid"
+          class="submit-button"
+        >
+          Add
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<section class="my-2">
+  <section class="carousel-3D-swiper-section">
+    <div
+      class="carousel-3D-swiper"
+      (swiper)="onSwiper($event)"
+      (swiperslidechange)="onSlideChange($event)"
+    >
+      <div class="swiper-wrapper mb-2 mt-12">
+        @for (card of user()?.cards; track $index) {
+        <div class="swiper-slide flex flex-col">
+          <div class="card">
+            <img
+            [src]="card.cardImage | base64: 'image/png' "
+              alt="{{ card.accountName }}"
+              class="card-image"
+            />
+            <h2 class="text-white font-semibold card-title">
+              {{ card.accountName }}
+            </h2>
+          </div>
+        </div>
+        }
+
+      </div>
+      <div
+        class="flex justify-center items-center m-auto left-0 right-0 w-fit bottom-12"
+      >
+        <button
+          id="slider-button-left"
+          class="swiper-button-prev group !p-2 swiper-button"
+          data-carousel-prev
+        >
+          <svg
+            class="h-5 w-5 text-white group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M10.0002 11.9999L6 7.99971L10.0025 3.99719"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <button
+          id="slider-button-right"
+          class="swiper-button-next group !p-2 swiper-button"
+          data-carousel-next
+        >
+          <svg
+            class="h-5 w-5 text-white group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              d="M5.99984 4.00012L10 8.00029L5.99748 12.0028"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+      <div>
+        <button
+          class="rounded-full bg-yellow-400 px-3.5 py-2.5 font-semibold text-2xl text-black shadow-sm hover:bg-yellow-600"
+          (click)="navigateToCardPage()"
+        >
+          More
+        </button>
+      </div>
+    </div>
+  </section>
+</section>

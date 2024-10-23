@@ -1,0 +1,9 @@
+.text-outline {
+    text-shadow: 1px 1px 0 #ffffff, -1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px -1px 0 #ffffff;
+}
+
+.table-text {
+    font-size: 1.5rem;
+    line-height: 2rem; 
+    font-weight: 600; 
+}

@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import 'ngx-toastr/toastr';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: 'inter';
+    src: url(/assets/fonts/src/assets/fonts/Inter-VariableFont_opsz,wght.ttf);
+}
+

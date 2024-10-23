@@ -1,0 +1,38 @@
+<table class="w-full text-sm rtl:text-right">
+  <thead class="flex w-full text-xs text-white uppercase">
+    <tr>
+      <th scope="col" class="px-6 py-3 rounded-s-lg"></th>
+      <th scope="col" class="pl-32 px-6 py-3">Month</th>
+      <th scope="col" class="px-6 py-3 rounded-e-lg">Change</th>
+    </tr>
+  </thead>
+  <tbody
+    class="flex flex-col justify-between overflow-y-scroll w-full"
+    style="height: 30vh"
+  >
+    @for (item of cards$(); track $index) { @for (transaction of
+    item.transactions; track $index) {
+    <tr>
+      <td class="px-6 py-4">
+        @if (!!item && transaction.balanceChange >= 0) {
+        <img src="./assets/images/Ok.png" />
+        } @else {
+        <img src="./assets/images/Good.png" />
+        }
+      </td>
+      <td class="px-6 py-4 text-white font-semibold pr-40">
+        {{ !!item && transaction.month }}
+      </td>
+      <td
+        [ngClass]="
+          !!item && transaction.balanceChange > 0
+            ? 'text-orange-500 table-text'
+            : 'text-green-600 table-text'
+        "
+      >
+        {{ !!item && transaction.balanceChange | currency : "GBP" }}
+      </td>
+    </tr>
+    } }
+  </tbody>
+</table>

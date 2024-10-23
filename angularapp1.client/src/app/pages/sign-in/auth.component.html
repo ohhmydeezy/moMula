@@ -1,0 +1,84 @@
+<div class="backdrop-blur-lg h-screen">
+  <div class="flex justify-center w-full px-6">
+    <div class="w-full max-w-xs">
+      <h1 class="text-yellow-400 font-semibold pt-10 pb-6">Sign In</h1>
+      @if (errorMessage$()) {
+      <div
+        class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <span class="font-medium">{{ errorMessage$() }}</span>
+      </div>
+      }
+
+      <form
+      [formGroup]="loginForm"
+        (ngSubmit)="login()"
+        class="rounded px-8 pt-6 pb-8 mb-4"
+      >
+      @if (loginForm.get('username')?.invalid &&
+      (loginForm.get('username')?.dirty ||
+      loginForm.get('username')?.touched)) {
+      <span class="error">This Field is required</span>
+      }
+        <div class="form-border">
+          <label
+            class="form-label"
+            for="username"
+          >
+            Username
+          </label>
+          <input
+            name="username"
+            formControlName="username"
+            class="login-input"
+            id="username"
+            type="text"
+            placeholder="Username"
+          />
+        </div>
+        @if (loginForm.get('password')?.invalid &&
+        (loginForm.get('password')?.dirty ||
+        loginForm.get('password')?.touched)) {
+        <span class="error">This Field is required</span>
+        }
+        <div class="form-border">
+          <label
+            class="form-label"
+            for="password"
+          >
+            Password
+          </label>
+          <input
+            name="password"
+            formControlName="password"
+            class="login-input"
+            id="password"
+            type="password"
+            placeholder="******************"
+          />
+        </div>
+        <div class="flex items-center justify-between">
+          <button
+            class="bg-yellow-400 hover:bg-orange-500 text-black font-bold py-2 px-4 rounded-full"
+            type="submit"
+          >
+            Sign In
+          </button>
+        </div>
+        <div class="pt-2 flex px-1 justify-center">
+          <p class="text-white">I'm a new user.</p>
+          <a
+            class="inline-block align-baseline text-sm text-yellow-400 hover:text-orange-500"
+            routerLink="/register"
+          >
+            Sign up
+          </a>
+        </div>
+      </form>
+      <p class="text-center text-blue-300 text-xs">
+        &copy;2024 MoMula. All rights reserved.
+      </p>
+    </div>
+  </div>
+</div>

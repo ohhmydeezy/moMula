@@ -1,0 +1,112 @@
+<div class="backdrop-blur-lg h-screen">
+  <div class="flex justify-center w-full px-6">
+    <div class="w-full max-w-xs">
+      <h1 class="text-yellow-400 font-semibold pt-20 w-96 pb-6">Sign Up</h1>
+      @if (errorMessage$() ?? "") {
+      <div
+        class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <span class="font-medium">{{ errorMessage$() }}</span>
+      </div>
+      }
+      <form
+        [formGroup]="registrationForm"
+        (ngSubmit)="register()"
+        autocomplete="off"
+        class="rounded px-8 pt-6 pb-8 mb-4"
+      >
+        @if (registrationForm.get('username')?.invalid &&
+        (registrationForm.get('username')?.dirty ||
+        registrationForm.get('username')?.touched)) {
+        <span class="error">This Field is required</span>
+        }
+        <div class="form-border">
+          <label class="form-label" for="name"> Username </label>
+          <input
+            formControlName="username"
+            class="register-input"
+            id="Name"
+            type="text"
+            placeholder="Your Name"
+          />
+        </div>
+        @if (registrationForm.get('email')?.invalid &&
+        (registrationForm.get('email')?.dirty ||
+        registrationForm.get('email')?.touched)) {
+        <span class="error">This Field is required</span>
+        }
+        <div class="form-border">
+          <label class="form-label" for="username"> Email </label>
+          <input
+            formControlName="email"
+            class="register-input"
+            id="username"
+            type="text"
+            placeholder="Email"
+          />
+        </div>
+        @if (registrationForm.get('password')?.invalid &&
+        (registrationForm.get('password')?.dirty ||
+        registrationForm.get('password')?.touched)) {
+        <span class="error">This Field is required</span>
+        }
+        <div class="form-border">
+          <label class="form-label" for="password"> Password </label>
+          <input
+            formControlName="password"
+            class="register-input"
+            id="password"
+            type="password"
+            placeholder="******************"
+          />
+        </div>
+        @if (registrationForm.get('monthlyIncome')?.invalid &&
+        (registrationForm.get('monthlyIncome')?.dirty ||
+        registrationForm.get('monthlyIncome')?.touched)) {
+        <span class="error">This Field is required</span>
+        }
+        <div class="form-border">
+          <label class="form-label" for="monthlyIncome"> Monthly Income </label>
+          <input
+            formControlName="monthlyIncome"
+            class="register-input"
+            id="income"
+            type="number"
+            placeholder="Income"
+          />
+        </div>
+        @if (registrationForm.get('savings')?.invalid &&
+        (registrationForm.get('savings')?.dirty ||
+        registrationForm.get('savings')?.touched)) {
+        <span class="error">This Field is required</span>
+        }
+        <div class="form-border">
+          <label class="form-label" for="savings"> Savings </label>
+          <input
+            formControlName="savings"
+            class="register-input"
+            id="savings"
+            type="number"
+            placeholder="savings"
+          />
+        </div>
+        <div class="flex items-center justify-between">
+          <button class="register-button" type="submit">Register</button>
+        </div>
+        <div class="pt-2 flex px-1 justify-center">
+          <p class="text-white">Already have an account?</p>
+          <a
+            class="inline-block align-baseline text-sm text-yellow-400 hover:text-orange-500"
+            routerLink="/sign-in"
+          >
+            Sign In
+          </a>
+        </div>
+      </form>
+      <p class="text-center text-blue-300 text-xs">
+        &copy;2024 MoMula. All rights reserved.
+      </p>
+    </div>
+  </div>
+</div>

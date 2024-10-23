@@ -1,0 +1,51 @@
+h1 {
+  font-size: 3rem;
+}
+
+div {
+  justify-content: center;
+  align-items: center;
+}
+
+.form-item {
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.5rem;
+  border-color: #e5e7eb;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.submit-button {
+  padding: 0.5rem;
+  margin-top: 0.75rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  background-color: #fbbf24;
+}
+
+.submit-button:disabled {
+  padding: 0.5rem;
+  margin-top: 0.75rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  background-color: #585858;
+}
+
+.error {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #fc0000;
+}
+
+.input {
+  @apply py-3 px-4 ps-9 pe-20 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600;
+}
