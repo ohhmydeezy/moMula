@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { loginSuccess } from './auth/auth.actions';
 import { showSpinner } from './state/app.actions';
-import { UserIdleService } from 'angular-user-idle';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +12,6 @@ export class AppComponent implements OnInit {
   title = 'angularapp1.client';
 
   #store = inject(Store);
-  #userIdle = inject(UserIdleService)
 
   ngOnInit() {
     this.setCurrentUser();
@@ -23,7 +21,6 @@ export class AppComponent implements OnInit {
     const userString = localStorage.getItem('user');
     if (!userString) return;
     const user = JSON.parse(userString);
-    this.#store.dispatch(showSpinner({ loading: true }));
     this.#store.dispatch(loginSuccess(user));
   }
 }

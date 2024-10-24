@@ -37,8 +37,6 @@ export class BreakdownComponent implements OnInit {
   cardId: number = parseInt(this.#route.snapshot.paramMap.get('cardId')!);
   currentCard$ = this.#store.selectSignal(selectCardbyId(this.cardId));
 
-
-
   expense = (this.user$()!.monthlyIncome / 3) * 0.9;
 
   minCard: Signal<Card | undefined> = computed(() =>
@@ -47,15 +45,16 @@ export class BreakdownComponent implements OnInit {
     )
   );
 
-  hasTransactions()
-  {
-    return !!this.currentCard$()?.transactions!.length
-  } 
+
+  hasTransactions() {
+    const card = this.currentCard$();
+    return card!.transactions?.length > 0;
+  }
 
   ngOnInit(): void {
-      setTimeout(() => {
-        this.showOverview()
-      }, 1000);
+    setTimeout(() => {
+      this.showOverview();
+    }, 1000);
   }
 
   totalPaid: Signal<number | undefined> = computed(() =>
@@ -68,20 +67,20 @@ export class BreakdownComponent implements OnInit {
 
   celebrate() {
     const duration = 3000;
-  
+
     confetti({
       particleCount: 150,
       spread: 180,
       origin: { y: 0.6 },
       colors: ['#FF4500', '#008080', '#FFD700'],
     });
-  
+
     setTimeout(() => confetti.reset(), duration);
   }
 
   deleteCard() {
     this.#store.dispatch(RemoveCard({ cardId: this.currentCard$()!.id }));
-    this.celebrate()
+    this.celebrate();
   }
 
   showOverview() {
@@ -123,7 +122,6 @@ export class BreakdownComponent implements OnInit {
       { value: this.currentCard$()?.accountBalance, category: 'Left' },
       { value: Math.abs(this.totalPaid() ?? 0), category: 'Paid Off' },
     ]);
-
 
     series.slices.template.set('tooltipText', '{category}: £{value}');
     series.labels.template.set('forceHidden', true);

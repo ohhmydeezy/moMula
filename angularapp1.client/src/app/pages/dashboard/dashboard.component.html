@@ -38,14 +38,14 @@
           Log Payment
         </button>
       </div>
-      @if(!hasTransactions()) {
-      <h2 class="text-white font-semibold m-4">
-        Account Payment history will be here
-      </h2>
-      }@else {
+      @if(hasTransactions()) {
       <div class="mt-2">
         <app-transactions></app-transactions>
       </div>
+      }@else {
+      <h2 class="text-white font-semibold m-4">
+        Account Payment history will be here
+      </h2>
       } 
     </div>
   </div>

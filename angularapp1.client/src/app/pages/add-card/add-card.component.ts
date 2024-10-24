@@ -19,7 +19,7 @@ export class AddCardComponent implements OnInit {
 
   addCardForm: FormGroup = new FormGroup({
     accountName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(35)]),
-    openingBalance: new FormControl(0, [Validators.required, Validators.min(1)]),
+    openingBalance: new FormControl('', [Validators.required, Validators.min(1)]),
   });
 
   ngOnInit(): void {

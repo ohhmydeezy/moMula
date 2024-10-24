@@ -42,8 +42,8 @@
               addCardForm.get('openingBalance')?.touched)) {
               <span class="error">This Field is required</span>
               }
-              @if(addCardForm.get('openingBalance')?.hasError('min')) {
-                <span class="error">Minimum required for opening balance</span>
+              @if(addCardForm.get('openingBalance')?.hasError('min') && addCardForm.get('openingBalance')?.touched) {
+                <span class="error">Minimum not met</span>
               }
               <div class="relative">
                 <input

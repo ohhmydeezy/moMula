@@ -32,7 +32,7 @@ export interface UserState {
 export const initialState: UserState = {
   user: undefined,
   selectedCard: undefined,
-  loading: true,
+  loading: false,
   error: '',
 };
 

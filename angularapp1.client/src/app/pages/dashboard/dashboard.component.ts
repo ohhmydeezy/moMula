@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectAllCards, selectUser } from '../../state/app.selectors';
 
@@ -12,7 +12,9 @@ export class DashboardComponent {
   user$ = this.#store.selectSignal(selectUser);
   card$ = this.#store.selectSignal(selectAllCards);
 
-  hasTransactions() {
-    return this.card$()?.some((card) => !!card.transactions.length);
+
+hasTransactions() {
+  const cards = this.card$();
+    return cards?.some((card) => card?.transactions?.length > 0);
   }
 }
